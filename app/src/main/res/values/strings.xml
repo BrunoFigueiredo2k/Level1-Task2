@@ -7,4 +7,6 @@
     <string name="F">F</string>
     <string name="T">T</string>
     <string name="submit_btn">Submit</string>
+    <string name="correct">Correct</string>
+    <string name="incorrect">Incorrect</string>
 </resources>
