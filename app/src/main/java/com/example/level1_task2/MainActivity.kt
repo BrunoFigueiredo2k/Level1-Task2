@@ -27,6 +27,7 @@ class MainActivity : AppCompatActivity() {
             onAnswerIncorrect()
         }
     }
+
     /** Displays an correct Toast message */
     private fun onAnswerCorrect() {
         Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_LONG).show()
