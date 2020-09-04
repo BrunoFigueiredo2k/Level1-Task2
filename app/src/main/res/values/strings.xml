@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Level1-Task2</string>
+    <string name="title_app">Conjunction (AND)</string>
+    <string name="value_A">A</string>
+    <string name="value_B">B</string>
+    <string name="value_AB">A ^ B</string>
+    <string name="F">F</string>
+    <string name="T">T</string>
+    <string name="submit_btn">Submit</string>
+</resources>
