@@ -30,16 +30,13 @@ class MainActivity : AppCompatActivity() {
 
         var answers = arrayOf(answerOne, answerTwo, answerThree, answerFour)
 
-        /** Loop through all answers given to see if they match the correct answers **/
+        /** Loop through all answers given to see if they match the correct answers and add
+         * one to amount correct if answer is correct **/
+        var amountCorrect = 0
         for (i in answers.indices) {
-            var amountCorrect = 0
-            if (answers[i] == correctAnswers[i]) {
-                amountCorrect += 1
-            }
-
-            /** check if looped through all questions and return toast message of how many correct **/
-            if (i == answers.size) showResults(amountCorrect)
+            if (answers[i] == correctAnswers[i]) amountCorrect += 1
         }
+        showResults(amountCorrect)
     }
 
     /** Displays an correct Toast message */
