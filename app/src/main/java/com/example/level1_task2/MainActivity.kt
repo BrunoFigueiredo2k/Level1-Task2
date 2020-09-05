@@ -4,37 +4,46 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import com.example.level1_task2.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var binding: MainActivity
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root) // Sets the activity layout resource file.
 
-        var answerOne = textView1.text.toString()
+        var correctAnswers = arrayOf("T", "F", "F", "F")
 
         binding.submitBtn.setOnClickListener{
-            checkAnswers("T", answerOne)
+            checkAnswers(correctAnswers)
         }
     }
 
     /** Check all answers and give toast message if correct or incorrect **/
-    private fun checkAnswers(correctAnswer: String, answer: String){
-        if (answer == correctAnswer){
-            onAnswerCorrect()
-        } else {
-            onAnswerIncorrect()
+    private fun checkAnswers(correctAnswers: Array<String>){
+        var answerOne = binding.answer1.text.toString()
+        var answerTwo = binding.answer2.text.toString()
+        var answerThree = binding.answer3.text.toString()
+        var answerFour = binding.answer4.text.toString()
+
+        var answers = arrayOf(answerOne, answerTwo, answerThree, answerFour)
+
+        /** Loop through all answers given to see if they match the correct answers **/
+        for (i in answers.indices) {
+            var amountCorrect = 0
+            if (answers[i] == correctAnswers[i]) {
+                amountCorrect += 1
+            }
+
+            /** check if looped through all questions and return toast message of how many correct **/
+            if (i == answers.size) showResults(amountCorrect)
         }
     }
 
     /** Displays an correct Toast message */
-    private fun onAnswerCorrect() {
-        Toast.makeText(this, getString(R.string.correct), Toast.LENGTH_LONG).show()
-    }
-
-    /** Displays an incorrect Toast message*/
-    private fun onAnswerIncorrect() {
-        Toast.makeText(this, getString(R.string.incorrect), Toast.LENGTH_LONG).show()
+    private fun showResults(amountCorrect: Int) {
+        Toast.makeText(this, "${amountCorrect}/4 questions correct", Toast.LENGTH_LONG).show()
     }
 }
