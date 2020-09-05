@@ -14,7 +14,7 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root) // Sets the activity layout resource file.
 
-        var correctAnswers = arrayOf("T", "F", "F", "F")
+        val correctAnswers = arrayOf("T", "F", "F", "F")
 
         binding.submitBtn.setOnClickListener{
             checkAnswers(correctAnswers)
